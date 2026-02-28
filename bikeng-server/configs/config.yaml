@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: ""
+  dbname: bikeng
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: ""
+  db: 0
+
+jwt:
+  secret: "your-jwt-secret-key"
+  access_ttl: 2h
+  refresh_ttl: 168h
+
+sms:
+  aliyun:
+    access_key: ""
+    secret: ""
+    sign_name: ""
+    template_code: ""
+
+ocr:
+  baidu:
+    api_key: ""
+    secret_key: ""
+
+oss:
+  aliyun:
+    endpoint: ""
+    access_key: ""
+    secret: ""
+    bucket: ""
+
+fcm:
+  server_key: ""
