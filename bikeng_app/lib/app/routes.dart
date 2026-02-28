@@ -7,6 +7,9 @@ import '../features/auth/presentation/pages/login_page.dart';
 import '../features/main_shell.dart';
 import '../features/home/presentation/pages/home_page.dart';
 import '../features/query/presentation/pages/query_page.dart';
+import '../features/analysis/presentation/pages/analysis_upload_page.dart';
+import '../features/analysis/presentation/pages/analysis_result_page.dart';
+import '../features/analysis/presentation/pages/analysis_history_page.dart';
 import '../features/community/presentation/pages/community_feed_page.dart';
 import '../features/profile/presentation/pages/profile_page.dart';
 import '../features/report/presentation/pages/report_form_page.dart';
@@ -64,6 +67,12 @@ GoRouter createRouter(AuthCubit authCubit) {
             ),
           ),
           GoRoute(
+            path: '/analysis',
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: AnalysisUploadPage(),
+            ),
+          ),
+          GoRoute(
             path: '/community',
             pageBuilder: (context, state) => const NoTransitionPage(
               child: CommunityFeedPage(),
@@ -118,6 +127,16 @@ GoRouter createRouter(AuthCubit authCubit) {
       GoRoute(
         path: '/alerts',
         builder: (context, state) => const AlertsPage(),
+      ),
+      GoRoute(
+        path: '/analysis/result/:id',
+        builder: (context, state) => AnalysisResultPage(
+          sessionId: state.pathParameters['id']!,
+        ),
+      ),
+      GoRoute(
+        path: '/analysis/history',
+        builder: (context, state) => const AnalysisHistoryPage(),
       ),
     ],
   );

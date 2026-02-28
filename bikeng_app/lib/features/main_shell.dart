@@ -9,7 +9,7 @@ class MainShell extends StatelessWidget {
   int _calculateSelectedIndex(BuildContext context) {
     final location = GoRouterState.of(context).matchedLocation;
     if (location.startsWith('/home')) return 0;
-    if (location.startsWith('/query')) return 1;
+    if (location.startsWith('/analysis')) return 1;
     if (location.startsWith('/community')) return 2;
     if (location.startsWith('/profile')) return 3;
     return 0;
@@ -21,7 +21,7 @@ class MainShell extends StatelessWidget {
         context.go('/home');
         break;
       case 1:
-        context.go('/query');
+        context.go('/analysis');
         break;
       case 2:
         context.go('/community');
@@ -48,9 +48,9 @@ class MainShell extends StatelessWidget {
             label: '首页',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search_outlined),
-            activeIcon: Icon(Icons.search),
-            label: '查询',
+            icon: Icon(Icons.analytics_outlined),
+            activeIcon: Icon(Icons.analytics),
+            label: '分析',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.people_outline),

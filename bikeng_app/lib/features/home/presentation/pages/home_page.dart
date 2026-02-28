@@ -61,9 +61,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Row(
           children: [
-            Icon(Icons.shield, size: 24),
+            Icon(Icons.visibility, size: 24),
             SizedBox(width: 8),
-            Text('避坑'),
+            Text('火眼金睛'),
           ],
         ),
         actions: [
@@ -80,6 +80,69 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Hero card for comprehensive analysis
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [AppColors.primary, AppColors.primaryLight],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.primary.withOpacity(0.3),
+                      blurRadius: 12,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: InkWell(
+                  onTap: () => context.go('/analysis'),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '智能综合分析',
+                              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                color: AppColors.textOnPrimary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              '上传截图，AI智能识别诈骗风险',
+                              style: TextStyle(
+                                color: AppColors.textOnPrimary.withOpacity(0.9),
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.2),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.shield,
+                          color: Colors.white,
+                          size: 32,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
               // Search bar
               Container(
                 padding: const EdgeInsets.all(16),
@@ -132,6 +195,15 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Expanded(
                           child: _QuickActionCard(
+                            icon: Icons.analytics,
+                            label: '综合分析',
+                            color: AppColors.secondary,
+                            onTap: () => context.go('/analysis'),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: _QuickActionCard(
                             icon: Icons.report,
                             label: '举报',
                             color: AppColors.riskHigh,
@@ -144,15 +216,6 @@ class _HomePageState extends State<HomePage> {
                             icon: Icons.search,
                             label: '查询',
                             color: AppColors.primary,
-                            onTap: () => context.go('/query'),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: _QuickActionCard(
-                            icon: Icons.camera_alt,
-                            label: '识别',
-                            color: AppColors.secondary,
                             onTap: () => context.go('/query'),
                           ),
                         ),

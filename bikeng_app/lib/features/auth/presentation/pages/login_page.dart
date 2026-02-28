@@ -115,14 +115,14 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                     child: const Icon(
-                      Icons.shield,
+                      Icons.visibility,
                       size: 56,
                       color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 24),
                   const Text(
-                    '避坑',
+                    '火眼金睛',
                     style: TextStyle(
                       fontSize: 36,
                       fontWeight: FontWeight.bold,
@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    '反诈防骗助手',
+                    '智能反诈分析助手',
                     style: TextStyle(
                       fontSize: 16,
                       color: AppColors.textSecondary,

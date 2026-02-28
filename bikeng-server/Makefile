@@ -2,7 +2,7 @@
 
 # Build the server binary
 build:
-	go build -o bin/bikeng-server ./cmd/server
+	go build -o bin/huoyanjinjing-server ./cmd/server
 
 # Run the server locally
 run:
@@ -32,7 +32,7 @@ infra-up:
 migrate:
 	@for f in migrations/*.sql; do \
 		echo "Running $$f..."; \
-		mysql -h 127.0.0.1 -u bikeng -pbikeng123 bikeng < $$f; \
+		mysql -h 127.0.0.1 -u huoyanjinjing -phuoyanjinjing123 huoyanjinjing < $$f; \
 	done
 
 # Run linter
@@ -45,4 +45,4 @@ tidy:
 
 # Build Docker image
 docker-build:
-	docker build -t bikeng-server .
+	docker build -t huoyanjinjing-server .

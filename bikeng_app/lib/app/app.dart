@@ -8,14 +8,14 @@ import '../core/storage/secure_storage.dart';
 import '../features/auth/data/auth_repository.dart';
 import '../features/auth/presentation/cubit/auth_cubit.dart';
 
-class BiKengApp extends StatefulWidget {
-  const BiKengApp({super.key});
+class HuoYanJinJingApp extends StatefulWidget {
+  const HuoYanJinJingApp({super.key});
 
   @override
-  State<BiKengApp> createState() => _BiKengAppState();
+  State<HuoYanJinJingApp> createState() => _HuoYanJinJingAppState();
 }
 
-class _BiKengAppState extends State<BiKengApp> {
+class _HuoYanJinJingAppState extends State<HuoYanJinJingApp> {
   late final SecureStorage _secureStorage;
   late final ApiClient _apiClient;
   late final AuthRepository _authRepository;
@@ -47,7 +47,7 @@ class _BiKengAppState extends State<BiKengApp> {
         BlocProvider<AuthCubit>.value(value: _authCubit),
       ],
       child: MaterialApp.router(
-        title: '避坑',
+        title: '火眼金睛',
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         routerConfig: createRouter(_authCubit),

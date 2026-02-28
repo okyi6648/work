@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Primary
-  static const Color primary = Color(0xFF1E3A5F);
-  static const Color primaryLight = Color(0xFF2E5A8F);
-  static const Color primaryDark = Color(0xFF0E2A4F);
+  // Primary (火焰红)
+  static const Color primary = Color(0xFFD4380D);
+  static const Color primaryLight = Color(0xFFE8573A);
+  static const Color primaryDark = Color(0xFFAD2A0A);
 
-  // Secondary / Accent
-  static const Color secondary = Color(0xFFFF9800);
-  static const Color accent = Color(0xFFFFC107);
+  // Secondary / Accent (金色)
+  static const Color secondary = Color(0xFFFFB800);
+  static const Color accent = Color(0xFFFFD54F);
 
   // Risk levels
   static const Color riskSafe = Color(0xFF4CAF50);

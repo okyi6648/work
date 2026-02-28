@@ -90,7 +90,7 @@ func LoadConfig(configPath string) (*Config, error) {
 		v := viper.New()
 		v.SetConfigFile(configPath)
 		v.AutomaticEnv()
-		v.SetEnvPrefix("BIKENG")
+		v.SetEnvPrefix("HUOYANJINJING")
 
 		if readErr := v.ReadInConfig(); readErr != nil {
 			err = readErr

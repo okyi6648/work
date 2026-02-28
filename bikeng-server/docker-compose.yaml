@@ -3,12 +3,12 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.0
-    container_name: bikeng-mysql
+    container_name: huoyanjinjing-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root123
-      MYSQL_DATABASE: bikeng
-      MYSQL_USER: bikeng
-      MYSQL_PASSWORD: bikeng123
+      MYSQL_DATABASE: huoyanjinjing
+      MYSQL_USER: huoyanjinjing
+      MYSQL_PASSWORD: huoyanjinjing123
     ports:
       - "3306:3306"
     volumes:
@@ -23,7 +23,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: bikeng-redis
+    container_name: huoyanjinjing-redis
     ports:
       - "6379:6379"
     volumes:
@@ -36,7 +36,7 @@ services:
 
   server:
     build: .
-    container_name: bikeng-server
+    container_name: huoyanjinjing-server
     ports:
       - "8080:8080"
     depends_on:
@@ -45,13 +45,13 @@ services:
       redis:
         condition: service_healthy
     environment:
-      - BIKENG_MYSQL_HOST=mysql
-      - BIKENG_MYSQL_PORT=3306
-      - BIKENG_MYSQL_USER=bikeng
-      - BIKENG_MYSQL_PASSWORD=bikeng123
-      - BIKENG_MYSQL_DBNAME=bikeng
-      - BIKENG_REDIS_HOST=redis
-      - BIKENG_REDIS_PORT=6379
+      - HUOYANJINJING_MYSQL_HOST=mysql
+      - HUOYANJINJING_MYSQL_PORT=3306
+      - HUOYANJINJING_MYSQL_USER=huoyanjinjing
+      - HUOYANJINJING_MYSQL_PASSWORD=huoyanjinjing123
+      - HUOYANJINJING_MYSQL_DBNAME=huoyanjinjing
+      - HUOYANJINJING_REDIS_HOST=redis
+      - HUOYANJINJING_REDIS_PORT=6379
     volumes:
       - ./configs:/app/configs
 

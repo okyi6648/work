@@ -43,7 +43,7 @@ func GenerateTokenPair(userID uint64, role string) (accessToken, refreshToken st
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(now.Add(accessTTL)),
 			IssuedAt:  jwt.NewNumericDate(now),
-			Issuer:    "bikeng",
+			Issuer:    "huoyanjinjing",
 			ID:        uuid.New().String(),
 		},
 		UserID: userID,
@@ -59,7 +59,7 @@ func GenerateTokenPair(userID uint64, role string) (accessToken, refreshToken st
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(now.Add(refreshTTL)),
 			IssuedAt:  jwt.NewNumericDate(now),
-			Issuer:    "bikeng",
+			Issuer:    "huoyanjinjing",
 			ID:        uuid.New().String(),
 		},
 		UserID: userID,

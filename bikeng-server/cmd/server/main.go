@@ -66,6 +66,9 @@ func main() {
 		&model.Comment{},
 		&model.Alert{},
 		&model.SmsCode{},
+		&model.AnalysisSession{},
+		&model.AnalysisImage{},
+		&model.AnalysisFactor{},
 	); err != nil {
 		log.Fatalf("failed to auto-migrate: %v", err)
 	}
@@ -97,6 +100,7 @@ func main() {
 	commentRepo := repository.NewCommentRepo(db)
 	alertRepo := repository.NewAlertRepo(db)
 	smsCodeRepo := repository.NewSmsCodeRepo(db)
+	analysisRepo := repository.NewAnalysisRepo(db)
 
 	// ---- Initialize services ----
 	authService := service.NewAuthService(userRepo, smsCodeRepo, smsClient, rdb)
@@ -108,6 +112,12 @@ func main() {
 	postService := service.NewPostService(postRepo, commentRepo)
 	alertService := service.NewAlertService(alertRepo)
 	ossService := service.NewOSSService(ossClient)
+	chatAnalysisService := service.NewChatAnalysisService()
+	accountAnalysisService := service.NewAccountAnalysisService(accountRepo, reportRepo)
+	transferAnalysisService := service.NewTransferAnalysisService()
+	comprehensiveAnalysisService := service.NewComprehensiveAnalysisService(
+		analysisRepo, chatAnalysisService, accountAnalysisService, transferAnalysisService, ocrService,
+	)
 
 	// ---- Initialize handlers ----
 	authHandler := handler.NewAuthHandler(authService)
@@ -119,6 +129,7 @@ func main() {
 	alertHandler := handler.NewAlertHandler(alertService)
 	uploadHandler := handler.NewUploadHandler(ossService)
 	adminHandler := handler.NewAdminHandler(reportService, appealService, accountRepo)
+	analysisHandler := handler.NewAnalysisHandler(comprehensiveAnalysisService)
 
 	// ---- Setup router ----
 	r := router.SetupRouter(
@@ -131,6 +142,7 @@ func main() {
 		alertHandler,
 		uploadHandler,
 		adminHandler,
+		analysisHandler,
 		rdb,
 		logger,
 	)

@@ -145,7 +145,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ListTile(
             leading:
                 const Icon(Icons.info_outline, color: AppColors.primary),
-            title: const Text('关于避坑'),
+            title: const Text('关于火眼金睛'),
             subtitle: const Text(
               'v1.0.0',
               style: TextStyle(color: AppColors.textHint),
@@ -155,7 +155,7 @@ class _SettingsPageState extends State<SettingsPage> {
             onTap: () {
               showAboutDialog(
                 context: context,
-                applicationName: '避坑',
+                applicationName: '火眼金睛',
                 applicationVersion: '1.0.0',
                 applicationIcon: Container(
                   width: 48,
@@ -165,13 +165,13 @@ class _SettingsPageState extends State<SettingsPage> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: const Icon(
-                    Icons.shield,
+                    Icons.visibility,
                     color: Colors.white,
                     size: 28,
                   ),
                 ),
                 children: [
-                  const Text('避坑 - 反诈防骗助手'),
+                  const Text('火眼金睛 - 智能反诈分析助手'),
                   const SizedBox(height: 8),
                   const Text(
                     '帮助用户识别和防范网络诈骗，共建安全网络环境。',

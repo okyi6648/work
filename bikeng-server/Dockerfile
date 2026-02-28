@@ -14,7 +14,7 @@ RUN go mod download
 COPY . .
 
 # Build the binary
-RUN CGO_ENABLED=0 GOOS=linux go build -o /bikeng-server ./cmd/server
+RUN CGO_ENABLED=0 GOOS=linux go build -o /huoyanjinjing-server ./cmd/server
 
 # Runtime stage
 FROM alpine:3.19
@@ -23,9 +23,9 @@ RUN apk add --no-cache ca-certificates tzdata
 
 WORKDIR /app
 
-COPY --from=builder /bikeng-server .
+COPY --from=builder /huoyanjinjing-server .
 COPY configs/config.yaml ./configs/
 
 EXPOSE 8080
 
-CMD ["./bikeng-server"]
+CMD ["./huoyanjinjing-server"]

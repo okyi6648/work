@@ -30,4 +30,9 @@ class ApiConstants {
   // Alert endpoints
   static const String alerts = '/alerts';
   static const String alertsLatest = '/alerts/latest';
+
+  // Analysis endpoints
+  static const String analysis = '/analysis';
+  static const String analysisComprehensive = '/analysis/comprehensive';
+  static const String analysisMine = '/analysis/mine';
 }

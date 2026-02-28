@@ -12,7 +12,7 @@ import (
 )
 
 // SetupRouter creates and configures the Gin engine with all routes and
-// middleware for the bikeng-server API.
+// middleware for the huoyanjinjing-server API.
 func SetupRouter(
 	authHandler *handler.AuthHandler,
 	ocrHandler *handler.OCRHandler,
@@ -23,6 +23,7 @@ func SetupRouter(
 	alertHandler *handler.AlertHandler,
 	uploadHandler *handler.UploadHandler,
 	adminHandler *handler.AdminHandler,
+	analysisHandler *handler.AnalysisHandler,
 	rdb *redis.Client,
 	logger *zap.Logger,
 ) *gin.Engine {
@@ -71,6 +72,11 @@ func SetupRouter(
 	protected.GET("/posts/:id/comments", postHandler.GetComments)
 	protected.POST("/posts/:id/like", postHandler.LikePost)
 	protected.DELETE("/posts/:id/like", postHandler.UnlikePost)
+
+	// Analysis
+	protected.POST("/analysis/comprehensive", analysisHandler.SubmitAnalysis)
+	protected.GET("/analysis/mine", analysisHandler.GetMyAnalyses)
+	protected.GET("/analysis/:id", analysisHandler.GetAnalysisResult)
 
 	// Alerts (read access for authenticated users)
 	protected.GET("/alerts", alertHandler.GetAlertList)
